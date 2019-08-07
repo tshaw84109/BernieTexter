@@ -114,14 +114,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Properties\171121-bernie-sanders-ap-1160.jpg" />
-    <Resource Include="Properties\BernieSanders-Not-Me-us.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Properties\bernie-sanders-2020-rally-brooklyn-college-crowd-8.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Properties\Et1w7TBZ.jpg" />
+    <Resource Include="Properties\bernie2020.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

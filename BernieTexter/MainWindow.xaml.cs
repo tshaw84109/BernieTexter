@@ -33,105 +33,137 @@ namespace BernieTexter
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            feedbackTextBlock.Text = "";
-
-            if ( VerifyAndAssignFromNumber() && VerifyAndAssignMessage() && VerifyAndAssignToNumbers() )
+            try
             {
-                foreach (string toNumber in toNumbers)
+                feedbackTextBlock.Text = "";
+
+                if (VerifyAndAssignFromNumber() && VerifyAndAssignMessage() && VerifyAndAssignToNumbers())
                 {
-                    myLogic.SendMessage(message, fromNumber, toNumber);
+                    foreach (string toNumber in toNumbers)
+                    {
+                        myLogic.SendMessage(message, fromNumber, toNumber);
+                    }
                 }
+            }
+            catch (Exception ex) // exception type you want to catch
+            {
+                string className = MethodInfo.GetCurrentMethod().DeclaringType.Name;
+                string methodName = MethodInfo.GetCurrentMethod().Name;
+                string message = ex.Message;
+                ErrorHandler.HandleError(className, methodName, message);;
             }
         }
 
         private bool VerifyAndAssignMessage()
         {
-            message = messageTextBox.Text;
+            try
+            {
+                message = messageTextBox.Text;
 
-            if(HasContent() && IsCorrectLength())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            
-
-            bool HasContent()
-            {
-                if (string.IsNullOrWhiteSpace(message))
-                {
-                    feedbackTextBlock.Text = "Message was blank. Please fix and retry.";
-                    return false;
-                }
-                else return true;
-            }
-
-            bool IsCorrectLength()
-            {
-                if(message.Length <= 160)
+                if (HasContent() && IsCorrectLength())
                 {
                     return true;
                 }
                 else
                 {
-                    feedbackTextBlock.Text = "Message length exceeded 160 characters. Please fix and retry.";
                     return false;
                 }
+
+
+                bool HasContent()
+                {
+                    if (string.IsNullOrWhiteSpace(message))
+                    {
+                        feedbackTextBlock.Text = "Message was blank. Please fix and retry.";
+                        return false;
+                    }
+                    else return true;
+                }
+
+                bool IsCorrectLength()
+                {
+                    if (message.Length <= 160)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        feedbackTextBlock.Text = "Message length exceeded 160 characters. Please fix and retry.";
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex) // exception type you want to catch
+            {
+                string className = MethodInfo.GetCurrentMethod().DeclaringType.Name;
+                string methodName = MethodInfo.GetCurrentMethod().Name;
+                string message = ex.Message;
+                ErrorHandler.HandleError(className, methodName, message);
+                return false;
             }
         }
 
         private bool VerifyAndAssignFromNumber()
         {
-            fromNumber = fromNumberTextBox.Text;
-            var chars = fromNumber.ToList();
+            try
+            {
+                fromNumber = fromNumberTextBox.Text;
+                var chars = fromNumber.ToList();
 
-            if(HasContent() && ContainsOnlyPlusOrDigits() && IsCorrectLength())
-            {
-                fromNumber = String.Join("", chars);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-            bool HasContent()
-            {
-                if (string.IsNullOrWhiteSpace(fromNumber))
+                if (HasContent() && ContainsOnlyPlusOrDigits() && IsCorrectLength())
                 {
-                    feedbackTextBlock.Text = "'From' phone number was blank. Please fix and retry.";
-                    return false;
+                    fromNumber = String.Join("", chars);
+                    return true;
                 }
                 else
                 {
-                    chars = AddPlusAnd1IfNeeded(chars);
-                    return true;
-                }
-            }
-
-            bool ContainsOnlyPlusOrDigits()
-            {
-                foreach (char c in chars)
-                {
-                    if ( !(c.Equals('+') || Char.IsDigit(c)) )
-                    {
-                        feedbackTextBlock.Text = "'From' phone number had an incorrect letter or symbol. Please fix and retry.";
-                        return false;
-                    }
-                }
-                return true;
-            }
-
-            bool IsCorrectLength()
-            {
-                if (chars.Count != 12)
-                {
-                    feedbackTextBlock.Text = "'From' phone number had incorrect length. Please fix and retry.";
                     return false;
                 }
-                else return true;
+
+                bool HasContent()
+                {
+                    if (string.IsNullOrWhiteSpace(fromNumber))
+                    {
+                        feedbackTextBlock.Text = "'From' phone number was blank. Please fix and retry.";
+                        return false;
+                    }
+                    else
+                    {
+                        chars = AddPlusAnd1IfNeeded(chars);
+                        return true;
+                    }
+                }
+
+                bool ContainsOnlyPlusOrDigits()
+                {
+                    foreach (char c in chars)
+                    {
+                        if (!(c.Equals('+') || Char.IsDigit(c)))
+                        {
+                            feedbackTextBlock.Text = "'From' phone number had an incorrect letter or symbol. Please fix and retry.";
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+
+                bool IsCorrectLength()
+                {
+                    if (chars.Count != 12)
+                    {
+                        feedbackTextBlock.Text = "'From' phone number had incorrect length. Please fix and retry.";
+                        return false;
+                    }
+                    else return true;
+                }
+            }
+            catch (Exception ex) // exception type you want to catch
+            {
+                string className = MethodInfo.GetCurrentMethod().DeclaringType.Name;
+                string methodName = MethodInfo.GetCurrentMethod().Name;
+                string message = ex.Message;
+                ErrorHandler.HandleError(className, methodName, message);
+                return false;
             }
         }
 
@@ -189,21 +221,30 @@ namespace BernieTexter
 
         List<char> AddPlusAnd1IfNeeded(List<char> chars)
         {
-            //check that starts with +, if not add
-            if (chars[0] != '+')
+            try
             {
-                chars.Insert(0, '+');
-            }
+                //check that starts with +, if not add
+                if (chars[0] != '+')
+                {
+                    chars.Insert(0, '+');
+                }
 
-            //check that next char is 1, if not add
-            if (chars[1] != '1')
+                //check that next char is 1, if not add
+                if (chars[1] != '1')
+                {
+                    chars.Insert(1, '1');
+                }
+
+                return chars;
+            }
+            catch (Exception ex) // exception type you want to catch
             {
-                chars.Insert(1, '1');
+                string className = MethodInfo.GetCurrentMethod().DeclaringType.Name;
+                string methodName = MethodInfo.GetCurrentMethod().Name;
+                string message = ex.Message;
+                ErrorHandler.HandleError(className, methodName, message);
+                return null;
             }
-
-            return chars;
         }
-
-
     }
 }

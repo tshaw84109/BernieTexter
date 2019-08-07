@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BernieTexter"
         mc:Ignorable="d"
-        Title="Bernie Texter" Height="427.292" Width="783.437">
+        Title="Bernie Texter" Height="427.292" Width="595.937">
     <Grid Background="#FF1163AC">
-        <TextBox x:Name="toNumbersTextBox" HorizontalAlignment="Left" Height="203" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="252"/>
+        <TextBox x:Name="toNumbersTextBox" HorizontalAlignment="Left" Height="203" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178"/>
         <Label x:Name="toNumbersLabel" Content="1) Input phone numbers to text." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="White"/>
-        <Label x:Name="messageLabel" Content="2) Enter a message." HorizontalAlignment="Left" Margin="287,10,0,0" VerticalAlignment="Top" Width="111" Background="White"/>
-        <TextBox x:Name="messageTextBox" HorizontalAlignment="Left" Height="203" Margin="287,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"/>
-        <Button x:Name="sendButton" Content="Send" HorizontalAlignment="Left" Margin="596,138,0,0" VerticalAlignment="Top" Width="75" Click="SendButton_Click"/>
-        <Label x:Name="sendLabel" Content="4) Press the button." HorizontalAlignment="Left" Margin="578,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.436,-0.368" Background="White"/>
-        <Label x:Name="fromNumberLabel" Content="3) Input 'from' number." HorizontalAlignment="Left" Margin="578,43,0,0" VerticalAlignment="Top" Background="White"/>
-        <TextBox x:Name="fromNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="578,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-        <TextBlock x:Name="feedbackTextBlock" HorizontalAlignment="Left" Margin="538,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="69" Width="227" Foreground="Red"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="165" Margin="563,244,0,-13" VerticalAlignment="Top" Width="169" Source="Properties/Et1w7TBZ.jpg"/>
+        <Label x:Name="messageLabel" Content="2) Enter a message." HorizontalAlignment="Left" Margin="212,10,0,0" VerticalAlignment="Top" Width="111" Background="White"/>
+        <TextBox x:Name="messageTextBox" HorizontalAlignment="Left" Height="115" Margin="212,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193"/>
+        <Button x:Name="sendButton" Content="Send" HorizontalAlignment="Left" Margin="431,112,0,0" VerticalAlignment="Top" Width="133" Click="SendButton_Click" Background="White"/>
+        <Label x:Name="sendLabel" Content="4) Press the button." HorizontalAlignment="Left" Margin="431,81,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.436,-0.368" Background="White" Width="133"/>
+        <Label x:Name="fromNumberLabel" Content="3) Input 'from' number." HorizontalAlignment="Left" Margin="431,12,0,0" VerticalAlignment="Top" Background="White"/>
+        <TextBox x:Name="fromNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="431,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+        <TextBlock x:Name="feedbackTextBlock" HorizontalAlignment="Left" Margin="431,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="69" Width="133" Foreground="Red"/>
+        <Image x:Name="bernieImage" HorizontalAlignment="Left" Height="223" Margin="193,163,0,0" VerticalAlignment="Top" Width="233" Source="Properties/Et1w7TBZ.jpg" RenderTransformOrigin="0.62,0.5"/>
 
     </Grid>
 </Window>
